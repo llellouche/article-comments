@@ -27,7 +27,9 @@ interface EntityDTO
     /**
      * * Return Entity form Json
      * @param string $jsonData
+     * @param ?string $typeClass
+     * @return mixed $entity
      */
-//    public static function toJsonLight(string $jsonData);
+    public static function fromJson(string $jsonData, ?string $typeClass);
 
 }

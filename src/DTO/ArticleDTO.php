@@ -17,4 +17,9 @@ class ArticleDTO implements EntityDTO
     {
         return self::toJsonLight($entity);
     }
+
+    public static function fromJson(string $jsonData, ?string $typeClass)
+    {
+        // TODO: Implement fromJsonLight() method.
+    }
 }

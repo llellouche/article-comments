@@ -9,7 +9,7 @@ use DateTime;
 
 #[ORM\InheritanceType('SINGLE_TABLE')]
 #[ORM\DiscriminatorColumn(name: 'discr', type: 'string')]
-#[ORM\DiscriminatorMap(['COMMENT' => Comment::class, 'ANSWER' => CommentAnswer::class])]
+#[ORM\DiscriminatorMap(['COMMENT' => ArticleComment::class, 'ANSWER' => CommentAnswer::class])]
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
 class Comment
 {
@@ -33,6 +33,12 @@ class Comment
     #[ORM\OneToMany(mappedBy: 'comment', targetEntity: CommentAnswer::class)]
     private Collection $answers;
 
+    public function __construct()
+    {
+        $this->createDate = new DateTime();
+        $this->rate       = 0;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -47,9 +53,9 @@ class Comment
     }
 
     /**
-     * @param int|null $content
+     * @param string|null $content
      */
-    public function setContent(?int $content): void
+    public function setContent(?string $content): void
     {
         $this->content = $content;
     }

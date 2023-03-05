@@ -22,7 +22,7 @@ class CommentAnswer extends Comment
     /**
      * @param Comment $parentComment
      */
-    public function setComment(Comment $parentComment): void
+    public function setParentComment(Comment $parentComment): void
     {
         $this->parentComment = $parentComment;
     }
