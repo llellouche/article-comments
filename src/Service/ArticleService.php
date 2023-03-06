@@ -14,6 +14,10 @@ class ArticleService
         $this->articleRepository = $articleRepository;
     }
 
+    public function getAll(): array
+    {
+        return $this->articleRepository->findAll();
+    }
     public function getArticle(int $articleId): ?Article
     {
         return $this->articleRepository->find($articleId);

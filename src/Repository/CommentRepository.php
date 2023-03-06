@@ -1,6 +1,5 @@
 <?php
 
-// src/Repository/ArticleRepository.php
 namespace App\Repository;
 
 use App\Entity\Comment;

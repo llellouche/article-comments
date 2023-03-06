@@ -9,10 +9,12 @@ class CommentDTO implements EntityDTO
     public static function toJsonLight($entity): array
     {
         return [
-            'id'           => $entity->getId(),
-            'content'      => $entity->getContent(),
-            'rate'         => $entity->getRate(),
-            'created_date' => $entity->getCreateDate()->getTimestamp(),
+            'id'            => $entity->getId(),
+            'content'       => $entity->getContent(),
+            'rate'          => $entity->getRate(),
+            'user_fullname' => $entity->getUser()->getFullname(),
+            'user_picture'  => $entity->getUser()->getPicture(),
+            'created_date'  => $entity->getCreateDate()->getTimestamp(),
         ];
     }
 

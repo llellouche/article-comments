@@ -22,7 +22,7 @@ class Comment
     private ?string $content;
 
     #[ORM\Column]
-    private ?int $rate;
+    private ?float $rate;
 
     #[ORM\Column]
     private ?DateTime $createDate;
@@ -32,6 +32,9 @@ class Comment
 
     #[ORM\OneToMany(mappedBy: 'comment', targetEntity: CommentAnswer::class)]
     private Collection $answers;
+
+    #[ORM\ManyToOne(targetEntity: User::class)]
+    private User $user;
 
     public function __construct()
     {
@@ -61,17 +64,17 @@ class Comment
     }
 
     /**
-     * @return int|null
+     * @return float|null
      */
-    public function getRate(): ?int
+    public function getRate(): ?float
     {
         return $this->rate;
     }
 
     /**
-     * @param int|null $rate
+     * @param float|null $rate
      */
-    public function setRate(?int $rate): void
+    public function setRate(?float $rate): void
     {
         $this->rate = $rate;
     }
@@ -122,5 +125,21 @@ class Comment
     public function setArticle(?Article $article): void
     {
         $this->article = $article;
+    }
+
+    /**
+     * @return User|null
+     */
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User|null $user
+     */
+    public function setUser(?User $user): void
+    {
+        $this->user = $user;
     }
 }

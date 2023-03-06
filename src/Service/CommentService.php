@@ -28,7 +28,7 @@ class CommentService
 
     public function getArticleComments(int $articleId): array
     {
-        return $this->articleCommentRepository->findBy(['article' => $articleId]);
+        return $this->articleCommentRepository->findBy(['article' => $articleId], ['createDate' => 'DESC']);
     }
 
     // Find ArticleComment and Answer
